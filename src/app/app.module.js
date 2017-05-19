@@ -8,30 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
-var forms_1 = require("@angular/forms");
-var http_1 = require("@angular/http");
-// Imports for loading & configuring the in-memory web api
-var angular_in_memory_web_api_1 = require("angular-in-memory-web-api");
-var in_memory_data_service_1 = require("./in-memory-data.service");
 var app_component_1 = require("./app.component");
-var heroes_component_1 = require("./heroes.component");
-var hero_detail_component_1 = require("./hero-detail.component");
-var hero_service_1 = require("./hero.service");
-var dashboard_component_1 = require("./dashboard.component");
 var app_routing_module_1 = require("./app-routing.module");
-var hero_search_component_1 = require("./hero-search.component");
-/*NOTES
-An Observable is a stream of events that you can process with array-like operators.
-
-Angular core has basic support for observables. Developers augment that support with
-operators and extensions from the RxJS library. (i.e. .toPromise())
-
-But requests aren't always done only once. You may start one request, cancel it, and make a different request before the server has responded to the first request.
-
-A request-cancel-new-request sequence is difficult to implement with Promises, but easy with Observables.
-
-
-*/
+var about_component_1 = require("./about.component");
+var banner_component_1 = require("./banner.component");
+var model_1 = require("./model");
+var twain_service_1 = require("./shared/twain.service");
+var welcome_component_1 = require("./welcome.component");
+var dashboard_module_1 = require("./dashboard/dashboard.module");
+var shared_module_1 = require("./shared/shared.module");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -41,21 +26,12 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [
             platform_browser_1.BrowserModule,
-            forms_1.FormsModule,
-            http_1.HttpModule,
-            angular_in_memory_web_api_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService),
-            app_routing_module_1.AppRoutingModule
+            dashboard_module_1.DashboardModule,
+            app_routing_module_1.AppRoutingModule,
+            shared_module_1.SharedModule
         ],
-        declarations: [
-            app_component_1.AppComponent,
-            dashboard_component_1.DashboardComponent,
-            hero_detail_component_1.HeroDetailComponent,
-            heroes_component_1.HeroesComponent,
-            hero_search_component_1.HeroSearchComponent
-        ],
-        providers: [
-            hero_service_1.HeroService //provides this service as singleton when from root (get rid of them in other components to prevent multiple instances)
-        ],
+        providers: [model_1.HeroService, twain_service_1.TwainService, model_1.UserService],
+        declarations: [app_component_1.AppComponent, about_component_1.AboutComponent, banner_component_1.BannerComponent, welcome_component_1.WelcomeComponent],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);
