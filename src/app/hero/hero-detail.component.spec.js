@@ -10,7 +10,7 @@ var hero_module_1 = require("./hero.module");
 var activatedRoute;
 var comp;
 var fixture;
-var page;
+var page; //class for easier access into the dom HTML
 ////// Tests //////
 describe('HeroDetailComponent', function () {
     beforeEach(function () {

@@ -18,7 +18,7 @@ import { HeroModule }          from './hero.module';
 let activatedRoute: ActivatedRouteStub;
 let comp: HeroDetailComponent;
 let fixture: ComponentFixture<HeroDetailComponent>;
-let page: Page;
+let page: Page;//class for easier access into the dom HTML
 
 ////// Tests //////
 describe('HeroDetailComponent', () => {
